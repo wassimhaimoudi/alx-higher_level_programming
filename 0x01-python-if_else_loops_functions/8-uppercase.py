@@ -4,5 +4,5 @@ def uppercase(str):
         order = ord(c)
         if order >= 97 and order <= 122:
             order -= 32
-        print('{}'.format(chr(ordert)), end='')
+        print('{}'.format(chr(order)), end='')
     print()
