@@ -6,5 +6,5 @@ if ld > 5:
     print(f"Last digit of {number:d} is {ld:d} and is greater than 5")
 elif ld < 6 and ld != 0:
     print(f"last digit of {number:d} is {ld:d} and is less that 6 and not 0")
-else:
+elif ld == 0:
     print(f"Last digit of {number:d} is {ld:d} and is zero")
