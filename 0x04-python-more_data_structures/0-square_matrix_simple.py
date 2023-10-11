@@ -1,5 +1,5 @@
-#!usr/bin/python3
-
+#!/usr/bin/python3
 def square_matrix_simple(matrix=[]):
-    sqrt_matrix = list(map(lambda r: list(map(lambda x: x**2, r)), matrix))
-    return sqrt_matrix
+    if matrix:
+        return [[x ** 2 for x in row] for row in matrix]
+    return None
