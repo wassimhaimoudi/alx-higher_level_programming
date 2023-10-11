@@ -1,4 +1,6 @@
 #!usr/bin/python3
+
+
 def square_matrix_simple(matrix=[]):
     """
     A function that computes the square
