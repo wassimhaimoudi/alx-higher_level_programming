@@ -4,6 +4,7 @@
 
 class Rectangle:
     """Represent a rectangle."""
+    number_of_instances = 0
 
     def __init__(self, width=0, height=0):
         """Initialize a new Rectangle.
@@ -12,8 +13,17 @@ class Rectangle:
             width (int): The width of the new rectangle.
             height (int): The height of the new rectangle.
         """
+        if not isinstance(width, int):
+            raise TypeError('width must be an integer')
+        if width < 0:
+            raise ValueError('width must be >= 0')
+        if not isinstance(height, int):
+            raise TypeError('height must be an integer')
+        if height < 0:
+            raise ValueError('height must be >= 0')
         self.width = width
         self.height = height
+        type(self).number_of_instances += 1
 
     @property
     def width(self):
@@ -75,3 +85,4 @@ class Rectangle:
     def __del__(self):
         """Print a message for every deletion of a Rectangle."""
         print("Bye rectangle...")
+        type(self).number_of_instances -= 1
