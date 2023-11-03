@@ -4,7 +4,7 @@
 
 class Square:
     """Represents a square shape"""
-    def __init__(self, size=0):
+    def __init__(self, size=0, position=(0, 0)):
         """
         Instantiation with optional size
         Args:
@@ -16,6 +16,12 @@ class Square:
         if size < 0:
             raise ValueError('size must be >= 0')
         self.__size = size
+
+        if type(position) is not tuple or
+            any(type(num) is not int for num in position) or
+            len(value) != 2 or any(num >= 0 for num in value):
+            raise TypeError('position must be a tuple of 2 positive integers')
+        self.__position = position
 
     def area(self):
         """
@@ -54,9 +60,39 @@ class Square:
             raise ValueError('size must be >= 0')
         self.__size = value
 
-    def my_print(self):
-        """Function That prints out a square using the character `#`"""
-        for i in range(self.size):
-            for j in range(self.size):
-                print("#", end="")
-            print()
+    @property
+    def position(self):
+        """
+        Function getter to retrieve the value of the position
+
+        Returns:
+            (tuple): A tuple of 2 positive integers
+
+        """
+        return (self.__position)
+
+    @position.setter
+    def position(self, value):
+        """
+        Function setter to change the value of the position
+
+        Args:
+            value(tuple): The position of the square object
+
+        """
+        if type(value) is not tuple or len(value) != 2 or
+            any(type(num) for num in value) or
+            any(num >= 0 for num in value)):
+        self.__position = value
+
+     def my_print(self):
+        """Print the square with the # character."""
+        if self.__size == 0:
+            print("")
+            return
+
+        [print("") for i in range(0, self.__position[1])]
+        for i in range(0, self.__size):
+            [print(" ", end="") for j in range(0, self.__position[0])]
+            [print("#", end="") for k in range(0, self.__size)]
+            print("")
