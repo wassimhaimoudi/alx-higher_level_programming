@@ -3,13 +3,7 @@
 
 
 class MyList(list):
-    """Represents a list"""
-    def __init__(self):
-        """
-        Instantiation of the MyList instance
-        Invokation of the parent class
-        """
-        super().__init__()
+    """Represents a subclass of  list"""
 
     def print_sorted(self):
         """prints the sorted list"""
