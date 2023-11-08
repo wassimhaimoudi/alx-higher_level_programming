@@ -1,34 +1,14 @@
 #!/usr/bin/python3
-"""This module defines a subclass of the `int `class."""
+"""Defines a class MyInt that inherits from int."""
 
 
 class MyInt(int):
-    def __init__(self, number):
-        super().__init__()
-        self.__number = number
+    """Invert int operators == and !=."""
 
-    def __eq__(self, other):
-        """
-        Overriding the == operator and inverting its role
+    def __eq__(self, value):
+        """Override == opeartor with != behavior."""
+        return self.real != value
 
-        Args:
-            other(object): an instance of the int object
-        Returns:
-            bool: false if there is equality
-        """
-        if isinstance(other, MyInt):
-            return super().__eq__(other)
-        return False
-
-    def __ne__(self, other):
-        """
-        Overriding the != operator and inverting its role
-
-        Args:
-            other(int): an instance of the int object
-        Returns:
-            bool: True if there is no equality
-        """
-        if isinstance(other, MyInt):
-            return super().__ne__(other)
-        return True
+    def __ne__(self, value):
+        """Override != operator with == behavior."""
+        return self.real == value
