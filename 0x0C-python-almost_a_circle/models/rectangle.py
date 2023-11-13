@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Rectangle subclass"""
 
-Base = __import__('base').Base
+from models.base import Base
 
 
 class Rectangle(Base):
@@ -18,11 +18,27 @@ class Rectangle(Base):
             y(int): The position of the rectangle on the y axis
 
         """
-        super(self, Base).__init__(id)
+        if not isinstance(width, int):
+            raise TypeError('width must be an integer')
+        if not isinstance(height, int):
+            raise TypeError('height must be an integer')
+        if not isinstance(x, int):
+            raise TypeError('x must be an integer')
+        if not isinstance(y, int):
+            raise TypeError('y must be an integer')
+        if width <= 0:
+            raise ValueError('width must be > 0')
+        if height <= 0:
+            raise ValueError('height must be > 0')
+        if x < 0:
+            raise ValueError('x must be >= 0')
+        if y < 0:
+            raise ValueError('y must be >= 0')
         self.__width = width
         self.__height = height
         self.__x = x
         self.__y = y
+        super().__init__(id)
 
     @property
     def width(self):
@@ -43,6 +59,10 @@ class Rectangle(Base):
             value(int): The new value of the width
 
         """
+        if not isinstance(value, int):
+            raise TypeError('width must be an integer')
+        if value <= 0:
+            raise ValueError('width must be > 0')
         self.__width = value
 
     @property
@@ -64,6 +84,10 @@ class Rectangle(Base):
             value(int): The new value of the height
 
         """
+        if not isinstance(value, int):
+            raise TypeError('height must be an integer')
+        if value <= 0:
+            raise ValueError('height must be > 0')
         self.__height = value
 
     @property
@@ -85,6 +109,10 @@ class Rectangle(Base):
             value(int): The new value of the x
 
         """
+        if not isinstance(value, int):
+            raise TypeError('x must be an integer')
+        if value < 0:
+            raise TypeError('x must be >= 0')
         self.__x = value
 
     @property
@@ -106,4 +134,51 @@ class Rectangle(Base):
             value(int): The new value of y
 
         """
+        if not instance(value, int):
+            raise TypeError('y must be an integer')
+        if value < 0:
+            raise TypeError('y must be >= 0')
         self.__y = value
+
+    def area(self):
+        """
+        Calculates the Rectangle area
+
+        Returns:
+            float: The value of the rectangle area
+        """
+        return (self.__width * self.__height)
+
+    def display(self):
+        """
+        Displays a rectangle representation
+        using the character `#`
+
+        Returns:
+            None
+        """
+        for y1 in range(1, self.__y + 1):
+            print()
+        for i in range(self.__height):
+            for x1 in range (1, self.__x + 1):
+                print(' ', end='')
+            for j in range(self.__width):
+                print('#', end='')
+            print()
+
+    def __str__(self):
+        """
+        Return a string representation of the object.
+
+        This method is called by the built-in str() function and the print()
+        function to obtain a string representation of the object.
+
+        Returns:
+            str: A string representation of the object
+        """
+        s = '[Rectangle] ({}) {}/{} - {}/{}'
+        return s.format(self.id, self.x, self.y, self.width, self.height)
+
+    def update(self, *args):
+        super(Rectangle, self).__init__(*args)
+            
