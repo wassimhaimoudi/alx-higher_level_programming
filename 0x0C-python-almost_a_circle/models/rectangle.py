@@ -185,5 +185,28 @@ class Rectangle(Base):
         s = '[Rectangle] ({}) {}/{} - {}/{}'
         return s.format(self.id, self.x, self.y, self.width, self.height)
 
-    """def update(self, *args):
-        super(Rectangle, self).__init__(*args)"""
+    def update(self, *args):
+        """
+        Updates instance attributes by assigning to each of them:
+
+        1. 1st argument should be the id attribute
+        2. 2nd argument should be the width attribute
+        3. 3rd argument should be the height attribute
+        4. 4th argument should be the x attribute
+        5. 5th argument should be the y attribute
+
+        Args:
+            args(list): a list of positional arguments
+
+        """
+        if args:
+            if len(args) > 0:
+                self.__id = args[0]
+            if len(args) > 1:
+                self.__width = args[1]
+            if len(args) > 2:
+                self.__height = args[2]
+            if len(args) > 3:
+                self.__x = args[3]
+            if len(args) > 4:
+                self.__y = args[4]
