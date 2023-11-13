@@ -200,6 +200,8 @@ class Rectangle(Base):
 
         """
         if args:
+            if len(args) == 0:
+                return
             if len(args) > 0:
                 self.__id = args[0]
             if len(args) > 1:
