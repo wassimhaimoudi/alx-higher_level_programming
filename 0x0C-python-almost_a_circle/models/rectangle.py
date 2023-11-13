@@ -17,7 +17,29 @@ class Rectangle(Base):
             x(int): The position of the rectangle on the x axis
             y(int): The position of the rectangle on the y axis
 
+        Raises:
+            TypeError: If neither the width nor the height are ints
+            ValueError: If neither the width or the height > 0
+            TypeError: If neither the x nor y are ints
+            ValueError: If neither x or y >= 0
+
         """
+        if type(width) is not int:
+            raise TypeError('width must be an integer')
+        if type(height) is not int:
+            raise TypeError('height must be an integer')
+        if type(x) is not int:
+            raise TypeError('x must be an integer')
+        if type(y) is not int:
+            raise TypeError('y must be an integer')
+        if width <= 0:
+            raise ValueError('width must be > 0')
+        if height <= 0:
+            raise ValueError('height must be > 0')
+        if x < 0:
+            raise ValueError('x must be >= 0')
+        if y < 0:
+            raise ValueError('y must be >= 0')
         self.__width = width
         self.__height = height
         self.__x = x
@@ -43,7 +65,7 @@ class Rectangle(Base):
             value(int): The new value of the width
 
         """
-        if not isinstance(value, int):
+        if type(value) is not int:
             raise TypeError('width must be an integer')
         if value <= 0:
             raise ValueError('width must be > 0')
@@ -68,7 +90,7 @@ class Rectangle(Base):
             value(int): The new value of the height
 
         """
-        if not isinstance(value, int):
+        if type(value) is not int:
             raise TypeError('height must be an integer')
         if value <= 0:
             raise ValueError('height must be > 0')
@@ -93,7 +115,7 @@ class Rectangle(Base):
             value(int): The new value of the x
 
         """
-        if not isinstance(value, int):
+        if type(value) is not int:
             raise TypeError('x must be an integer')
         if value < 0:
             raise TypeError('x must be >= 0')
@@ -118,7 +140,7 @@ class Rectangle(Base):
             value(int): The new value of y
 
         """
-        if not instance(value, int):
+        if type(value) is not int:
             raise TypeError('y must be an integer')
         if value < 0:
             raise TypeError('y must be >= 0')
@@ -144,7 +166,7 @@ class Rectangle(Base):
         for y1 in range(1, self.__y + 1):
             print()
         for i in range(self.__height):
-            for x1 in range (1, self.__x + 1):
+            for x1 in range(1, self.__x + 1):
                 print(' ', end='')
             for j in range(self.__width):
                 print('#', end='')
@@ -163,6 +185,5 @@ class Rectangle(Base):
         s = '[Rectangle] ({}) {}/{} - {}/{}'
         return s.format(self.id, self.x, self.y, self.width, self.height)
 
-    def update(self, *args):
-        super(Rectangle, self).__init__(*args)
-            
+    """def update(self, *args):
+        super(Rectangle, self).__init__(*args)"""
