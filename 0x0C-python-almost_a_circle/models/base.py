@@ -23,6 +23,30 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
+        """
+        Returns aa JSON representation of a list of dicts
+
+        Args:
+            list_dictionaries(list): The list to be JSON
+            represented
+
+        Returns:
+            str: A JSON string representation
+        """
         if list_dictionaries is None or list_dictionaries == []:
             return '[]'
         return json.dumps(list_dictionaries)
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """
+        Writes a JSON representation of a list of objects
+        to a json file
+
+        Args:
+            list_objs(list): The list of objects to be stored in
+            a json file
+        """
+        obj_json = to_json_string(list_objs)
+        with open('{}.json'.format(cls.__name__), 'w'):
+            f.write(obj_json)
