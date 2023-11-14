@@ -47,6 +47,10 @@ class Base:
             list_objs(list): The list of objects to be stored in
             a json file
         """
-        obj_json = to_json_string(list_objs)
-        with open('{}.json'.format(cls.__name__), 'w'):
-            f.write(obj_json)
+        filename = cls.__name__ + ".json"
+        with open(filename, "w") as jsonfile:
+            if list_objs is None:
+                jsonfile.write("[]")
+            else:
+                list_dicts = [o.to_dictionary() for o in list_objs]
+                jsonfile.write(Base.to_json_string(list_dicts))
