@@ -59,15 +59,6 @@ class Square(Rectangle):
                 }
 
     def __str__(self):
-        """
-        Return a string representation of the square instance
-
-        This method is called by the built-in str() function
-        and the print() function to obtain a string
-        representation of the square object
-
-        Returns:
-            str: A string representation of the square object
-        """
-        s = '[Square]({}) {}/{} - {}'
-        return (s.format(self.id, self.x, self.y, self.width))
+        """Return the print() and str() representation of a Square."""
+        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y,
+                                                 self.width)
