@@ -185,7 +185,7 @@ class Rectangle(Base):
         s = '[Rectangle] ({}) {}/{} - {}/{}'
         return s.format(self.id, self.x, self.y, self.width, self.height)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """
         Updates instance attributes by assigning to each of them:
 
@@ -197,6 +197,7 @@ class Rectangle(Base):
 
         Args:
             args(list): a list of positional arguments
+            kwargs(dict): a dict of keyword arguments
 
         """
         if args:
