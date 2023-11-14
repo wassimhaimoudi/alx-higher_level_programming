@@ -19,20 +19,6 @@ class Square(Rectangle):
         """
         super().__init__(size, size, x, y, id)
 
-    def __str__(self):
-        """
-        Return a string representation of the square instance
-
-        This method is called by the built-in str() function
-        and the print() function to obtain a string
-        representation of the square object
-
-        Returns:
-            str: A string representation of the square object
-        """
-        s = '[Square]({}) {}/{} - {}'
-        return (s.format(self.id, self.x, self.y, self.width))
-
     @property
     def size(self):
         """
@@ -71,3 +57,17 @@ class Square(Rectangle):
                 'x': self.x,
                 'y': self.y
                 }
+
+    def __str__(self):
+        """
+        Return a string representation of the square instance
+
+        This method is called by the built-in str() function
+        and the print() function to obtain a string
+        representation of the square object
+
+        Returns:
+            str: A string representation of the square object
+        """
+        s = '[Square]({}) {}/{} - {}'
+        return (s.format(self.id, self.x, self.y, self.width))
