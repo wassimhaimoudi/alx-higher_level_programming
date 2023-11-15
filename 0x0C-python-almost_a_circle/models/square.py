@@ -62,6 +62,7 @@ class Square(Rectangle):
         """Return the print() and str() representation of a Square."""
         return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y,
                                                  self.width)
+
     def update(self, *args, **kwargs):
         """
         updates the Square subclass by assigning to the class instance
@@ -73,7 +74,7 @@ class Square(Rectangle):
         """
         if args is not None and len(args) != 0:
             if len(args) >= 1:
-                if type(args[0]) != int and args[0] is not None:
+                if type(args[0]) is not int and args[0] is not None:
                     raise TypeError("id must be an integer")
                 self.id = args[0]
             if len(args) > 1:
@@ -85,7 +86,7 @@ class Square(Rectangle):
         else:
             for key, value in kwargs.items():
                 if key == "id":
-                    if type(value) != int and value is not None:
+                    if type(value) is not int and value is not None:
                         raise TypeError("id must be an integer")
                     self.id = value
                 if key == "size":
