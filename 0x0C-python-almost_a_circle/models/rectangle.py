@@ -200,19 +200,38 @@ class Rectangle(Base):
             kwargs(dict): a dict of keyword arguments
 
         """
-        if args:
-            if len(args) == 0:
-                return
-            if len(args) > 0:
-                self.__id = args[0]
-            if len(args) > 1:
-                self.__width = args[1]
-            if len(args) > 2:
-                self.__height = args[2]
-            if len(args) > 3:
-                self.__x = args[3]
-            if len(args) > 4:
-                self.__y = args[4]
+        if args and len(args) != 0:
+            for a, value in zip(range(len(args)), args):
+                if a == 0:
+                    if value is not None:
+                        self.id = value
+                    else:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                elif a == 1:
+                    self.width = value
+                elif a == 2:
+                    self.height = value
+                elif a == 3:
+                    self.x = value
+                elif a == 4:
+                    self.y = value
+                a += 1
+
+        elif kwargs and len(kwargs) != 0:
+            for k, v in kwargs.items():
+                if k == 'id':
+                    if v is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = v
+                elif k == 'width':
+                    self.width = v
+                elif k == 'height':
+                    self.height = v
+                elif k == 'x':
+                    self.x = v
+                elif k == 'y':
+                    self.y = v
 
     def to_dictionary(self):
         """
