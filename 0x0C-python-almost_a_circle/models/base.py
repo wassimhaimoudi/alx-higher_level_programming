@@ -82,6 +82,6 @@ class Base:
         Returns:
             obj: A python class instance or object.
         """
-        dummy = cls(4, 3, 2, 2)
+        dummy = cls(4, 3, 2)
         dummy.update(**dictionary)
         return (dummy)
