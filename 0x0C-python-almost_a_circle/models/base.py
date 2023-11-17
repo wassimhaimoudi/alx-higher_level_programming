@@ -82,9 +82,10 @@ class Base:
         Returns:
             obj: A python class instance or object.
         """
-        if cls.__name__ == 'Rectangle':
-            dummy = cls(4, 3, 2, 2)
-        else:
-            dummy = cls(3, 2, 1)
-        dummy.update(**dictionary)
-        return (dummy)
+        if dictionary and dictionary != {}:
+            if cls.__name__ == "Rectangle":
+                dummy = cls(3, 2)
+            else:
+                dummy = cls(3)
+            dummy.update(**dictionary)
+            return (dummy)
