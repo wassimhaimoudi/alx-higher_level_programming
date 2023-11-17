@@ -69,3 +69,19 @@ class Base:
             else:
                 list_dicts = [o.to_dictionary() for o in list_objs]
                 jsonfile.write(Base.to_json_string(list_dicts))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        Returns an instance of the class `cls` with all
+        attributes already set.
+
+        Args:
+            dictionary(dict): A dict representation of a class instance
+
+        Returns:
+            obj: A python class instance or object.
+        """
+        dummy = cls(4, 3, 2, 2)
+        dummy.update(**dictionary)
+        return (dummy)
