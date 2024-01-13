@@ -19,7 +19,7 @@ if __name__ == '__main__':
             WHERE name = '{}' \
             ORDER BY states.id".format(s_name)
     cur.execute(query)
-    
+
     result_set = cur.fetchall()
 
     for row in result_set:
