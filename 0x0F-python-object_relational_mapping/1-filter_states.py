@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" This module lists all states from the database hbtn_0e_0_usa """
+""" This module lists all states where name starts with 'N'
+from the database hbtn_0e_0_usa """
 if __name__ == '__main__':
     import sys
     import MySQLdb
