@@ -24,7 +24,7 @@ if __name__ == '__main__':
 
     result_set = cur.fetchall()
 
-    cities_by_state = [row[1] for row in result_set]
+    cities_by_state = [row[1] for row in result_set if result_set is not None]
     result_string = ', '.join(cities_by_state)
 
     print(result_string)
