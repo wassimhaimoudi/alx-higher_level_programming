@@ -16,16 +16,13 @@ if __name__ == '__main__':
             my_pwd,
             my_db
             )
-    engine = create_engine(my_url, echo=True)
-
+    
+    Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-
-    my_state = State(name='Louisiana')
-
-    session.add(my_state)
+    new_state = State(name='Louisiana')
+    session.add(new_state)
+    new_instance = session.query(State).filter_by(
+            name='Louisiana').first()
+    print(new_instance.id)
     session.commit()
-
-    print(my_state.id)
-
-    session.close()
