@@ -26,13 +26,12 @@ if __name__ == '__main__':
     session = Session()
 
     results = session.query(
-            State.name,
-            City.id,
-            City.name
-            ).filter(State.id == City.state_id).order_by(City.id)
+            State,
+            City
+            ).join(City, State.id == City.state_id).order_by(City.id)
 
-    for row in results.all():
-        print('{}: ({}) {}'.format(row[0], row[1], row[2]))
+    for state, city in results.all():
+        print('{}: ({}) {}'.format(state.name, city.id, city.name))
 
     session.commit()
     session.close()
