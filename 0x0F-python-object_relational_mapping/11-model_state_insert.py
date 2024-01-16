@@ -16,7 +16,8 @@ if __name__ == '__main__':
             my_pwd,
             my_db
             )
-    
+
+    engine = create_engine(my_url)
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
