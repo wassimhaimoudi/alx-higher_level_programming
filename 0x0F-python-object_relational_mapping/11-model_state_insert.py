@@ -15,17 +15,18 @@ if __name__ == "__main__":
             'mysql+mysqldb://{}:{}@localhost/{}'.
             format(my_usr, my_pwd, my_db)
             )
+    Base.metadata.create_all()
 
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    new_state = State(id=5, name='Louisiana')
+    new_state = State(name='Louisiana')
     session.add(new_state)
-    session.commit()
 
     result_state = session.query(State).filter(
-            State.name.like('{}'.format(new_state.name))
+            State.name.like('{}'.format('Louisiana'))
             ).first()
 
     print(result_state.id)
+    session.commit()
     session.close()
