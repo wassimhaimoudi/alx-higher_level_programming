@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""This script prints the State object with the name passed
-as an argument from the database hbtn_0e_6_usa
+"""This script add the State 'Louisiana' to the database hbtn_0e_6_usa
 """
 if __name__ == "__main__":
     from model_state import Base, State
@@ -11,7 +10,6 @@ if __name__ == "__main__":
     my_usr = argv[1]
     my_pwd = argv[2]
     my_db = argv[3]
-    my_state = argv[4]
 
     engine = create_engine(
             'mysql+mysqldb://{}:{}@localhost/{}'.
@@ -21,13 +19,13 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
+    new_state = State(id=6, name='Louisiana')
+    session.add(new_state)
+    session.commit()
+
     result_state = session.query(State).filter(
-            State.name.like('{}'.format(my_state))
-            ).order_by(State.id).first()
+            State.name.like('{}'.format(new_state.name))
+            ).first()
 
-    if result_state:
-        print(result_state.id)
-    else:
-        print('Not found')
-
+    print(result_state.id)
     session.close()
