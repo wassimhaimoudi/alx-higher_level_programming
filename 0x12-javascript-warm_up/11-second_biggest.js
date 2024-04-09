@@ -8,3 +8,4 @@ if (process.argv.length === 2 || process.argv.length === 3) {
   const sortedArray = slicedArray.sort((a, b) => a - b);
   const reversedArray = sortedArray.reverse();
   console.log(reversedArray[1]);
+}
