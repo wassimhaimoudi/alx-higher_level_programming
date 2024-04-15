@@ -1,6 +1,10 @@
 #!/usr/bin/python3
+"""This script deletes all the states containing
+the letter `a` from the database hbtn_0e_6_usa
+"""
 
 if __name__ == "__main__":
+
     from model_state import Base, State
     from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
