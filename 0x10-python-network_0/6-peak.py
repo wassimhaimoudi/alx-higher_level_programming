@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" This module defines a function called `find_peak`
+""" This module defines a function called find_peak
 """
 
 
