@@ -5,6 +5,12 @@ that finds a peak in a list of unsorted integers
 
 
 def find_peak(my_list: list):
+    """ finds peak in a list of unsorted integers
+        Args:
+            my_list[list]: The list to search in.
+        Returns:
+            (int): The peak element in my_list
+    """
     if not my_list:
         return None
     if len(my_list) == 1:
