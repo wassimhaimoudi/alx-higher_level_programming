@@ -1,15 +1,14 @@
 #!/usr/bin/python3
 """ This module defines a function called `find_peak`
-that finds a peak in a list of unsorted integers
 """
 
 
 def find_peak(my_list: list):
     """ finds peak in a list of unsorted integers
         Args:
-            my_list[list]: The list to search in.
+            my_list(list): The list to search in.
         Returns:
-            (int): The peak element in my_list
+            int|None:The peak element in my_list
     """
     if not my_list:
         return None
