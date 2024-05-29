@@ -4,14 +4,17 @@ using the urllib package
 """
 
 
-import urllib.request
-
-url = 'https://alx-intranet.hbtn.io/status'
-with urllib.request.urlopen(url) as response:
-    response = response.read()
-
 if __name__ == '__main__':
-    print('Body response:')
-    print(f'\t- type: {type(response)}')
-    print(f'\t- content: {response}')
-    print(f'\t- uft8 content: {response.decode("utf")}')
+    import urllib.request
+
+    url = 'https://alx-intranet.hbtn.io/status'
+    try:
+        with urllib.request.urlopen(url) as response:
+            body = response.read()
+
+        print('Body response:')
+        print(f'\t- type: {type(body)}')
+        print(f'\t- content: {body}')
+        print(f'\t- uft8 content: {body.decode("utf")}')
+    except Exception:
+        pass
