@@ -17,8 +17,14 @@ if __name__ == "__main__":
     else:
         data.setdefault('q', argv[1])
 
-    r = requests.post(url, data=data)
-    json = r.json()
-    id = json.get('id')
-    name = json.get('name')
-    print(f'[{id}] {name}')
+    try:
+        r = requests.post(url, data=data)
+        _json = r.json()
+        if _json == {}:
+            print('No results')
+        else:
+            id = _json.get('id')
+            name = _json.get('name')
+            print(f'[{id}] {name}')
+    except requests.exceptions.JSONDecodeError as e:
+        print('Not a valid JSON')
