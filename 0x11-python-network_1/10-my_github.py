@@ -10,11 +10,9 @@ if __name__ == '__main__':
     from requests.auth import HTTPBasicAuth
     from sys import argv
 
-
     url = 'https://api.github.com/user'
     username = argv[1]
     token = argv[2]
-
     basic = HTTPBasicAuth(username, token)
     r = requests.get(url, auth=basic)
     _json = r.json()
