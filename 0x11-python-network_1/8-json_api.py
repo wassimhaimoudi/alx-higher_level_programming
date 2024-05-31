@@ -18,12 +18,11 @@ if __name__ == "__main__":
         data.setdefault('q', argv[1])
     r = requests.post(url, data=data)
     try:
-        _json = r.json()
-        id = _json.get('id')
-        name = _json.get('name')
-        if len(_json) == 0 or not id or not name:
-            print('No results')
+        if _json == {}:
+            print('No result')
         else:
+            id = _json.get('id')
+            name = _json.get('name')
             print(f'[{id}] {name}')
-    except:
+    except Exception:
         print('Not a valid JSON')
