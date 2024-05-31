@@ -18,7 +18,7 @@ if __name__ == "__main__":
         data.setdefault('q', argv[1])
     r = requests.post(url, data=data)
     try:
-        if _json == {}:
+        if (_json := r.json()) == {}:
             print('No result')
         else:
             id = _json.get('id')
